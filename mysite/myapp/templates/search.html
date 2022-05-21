@@ -1,0 +1,9 @@
+<form method='GET' >
+    <input type='text' name='q' placeholder="Enter Search Keyword" value='{{ request.GET.q }}' id='intry'>
+    <input type='submit' value='Search' class='button_1' id='sub1'>
+</form>
+<ul>
+{% for element in results %}
+    <li>{{ element.employe_id }}.{{ element.name }},{{ element.address}},{{ element.qualification }}</li>
+{% endfor %}
+</ul>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employe Create</title>
+</head>
+<body>
+<div style="width:100%;">
+    <div style="width:21%;float: left;">
+        <form method="post" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p><button>Create New</button></p>
+
+    </form></div>
+     <div style="width:40%;float: left;">
+         <table>
+             <h2>Filter Data</h2>
+
+             <div>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Qualification</th>
+            </tr>
+              {%for data1 in empfilter1 %}
+                 <tr>
+                    <td >{{ data1.employe_id}}</td>
+                    <td>{{ data1.name}}</td>
+                    <td>{{ data1.address }}</td>
+                    <td>{{ data1.qualification }}</td>
+                     <td>{{ data1.qualification }}</td>
+                </tr>
+              {% endfor   %}
+         </table>
+     </div>
+</div>
+<div>
+    <h2>Search Data</h2>
+   <form method='GET' >
+    <input type='text' name='q' placeholder="Enter Search Keyword" value='{{ request.GET.q }}' id='intry'>
+    <input type='submit' value='Search' class='button_1' id='sub1'>
+</form>
+<ul>
+{% for element in results %}
+    <li>{{ element.employe_id }}.{{ element.name }},{{ element.address}},{{ element.qualification }}</li>
+{% endfor %}
+</ul>
+
+    </div>
+<div>
+    <div style="width:40%;">
+        <table  style="width:30%">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Qualification</th>
+            </tr>
+             {%for data1 in data2 %}
+            <tr>
+                <td >{{ data1.employe_id}}</td>
+                <td>{{ data1.name}}</td>
+                <td>{{ data1.address }}</td>
+                <td>{{ data1.qualification }}</td>
+            </tr>
+                {% endfor   %}
+
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
+

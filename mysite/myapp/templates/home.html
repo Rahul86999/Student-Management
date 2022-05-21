@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h1>Home</h1>
+<p>Welcome, {{ user.username }}.</p>
+ <table  style="width:100%">
+
+     <form method="POST">
+         {% csrf_token %}
+        <tr>
+            <th>Id</th>
+            <th>Roll No.</th>
+            <th>Name</th>
+            <th>Father Name</th>
+            <th>Gender</th>
+            <th>Date Of Birth</th>
+            <th>Address</th>
+            <th>Qualification</th>
+            <th>Email</th>
+            <th>Actions</th>
+
+        </tr>
+         {%for data1 in data2 %}
+        <tr>
+            <td>{{ data1.id}}</td>
+            <td>{{ data1.roll_no}}</td>
+            <td>{{ data1.name}}</td>
+            <td>{{ data1.father_name}}</td>
+            <td>{{ data1.gender }}</td>
+            <td>{{ data1.birth }}</td>
+            <td>{{ data1.address }}</td>
+            <td>{{ data1.qualification }}</td>
+            <td>{{ data1.email}}</td>
+             <td><a href="/edit/{{ data1.id }}" style="color: #187b1c;">Edit</a> |
+            <a href="/delete/{{ data1.id }}" style="color: #c74747;" onclick="javascript:return ConfirmDelete()">Delete</a></td>
+
+        </tr>
+
+            {% endfor   %}
+
+        </form>
+    </table>
+<button><a href="/create">Create</a></button>
+</body>
+</html>
